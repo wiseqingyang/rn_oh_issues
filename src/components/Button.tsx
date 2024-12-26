@@ -3,12 +3,13 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 interface IProps {
   title: string;
+  disabled?: boolean;
   onPress: () => void;
 }
 
-const Button: React.FC<IProps> = ({ title, onPress }) => {
+const Button: React.FC<IProps> = ({ title, onPress, disabled }) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={styles.button} onPress={onPress} disabled={disabled}>
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );

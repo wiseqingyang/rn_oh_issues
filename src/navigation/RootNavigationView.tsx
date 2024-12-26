@@ -2,7 +2,10 @@ import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/
 import React, { FC } from 'react';
 import { View, StyleSheet } from 'react-native';
 import HomeNavigation from './HomeNavigation';
-import ListPage from '../pages/ListPage';
+import PdfPage from '../pages/PdfPage';
+import KeyboardPage from '../pages/KeyboardPage';
+import GesturePage from '../pages/GesturePage';
+import VideoPage from '../pages/VideoPage';
 
 interface IProps { }
 
@@ -16,7 +19,10 @@ const RootNavigation: FC<IProps> = () => {
 
       }}>
         <Stack.Screen name='HomeNavigation' component={HomeNavigation} />
-        <Stack.Screen name='List' component={ListPage} />
+        <Stack.Screen name='Pdf' component={PdfPage} />
+        <Stack.Screen name='Keyboard' component={KeyboardPage} />
+        <Stack.Screen name='Gesture' component={GesturePage} />
+        <Stack.Screen name='Video' component={VideoPage} />
       </Stack.Navigator>
     </View>
   );

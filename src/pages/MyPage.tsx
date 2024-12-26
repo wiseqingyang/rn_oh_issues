@@ -13,9 +13,8 @@ const MyPage: FC<IProps> = () => {
       <Header level={1} >
         MyPage
       </Header>
-      <Button title='跳转' onPress={() => {
-        navigation.navigate('List')
-      }} />
+      <View style={{ flex: 1 }} />
+      <Text style={{ color: 'white', margin: 16 }}>⬇️⬇️切换Tab 会导致带lottie的tab不显示⬇️⬇️</Text>
     </View>
   );
 };

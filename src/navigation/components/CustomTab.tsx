@@ -10,8 +10,6 @@ interface ICustomTabProps {
   tintColor: string;
 }
 
-const tabBarH = 45
-
 const CustomTab: FC<ICustomTabProps> = ({
   icon,
   name,
@@ -43,14 +41,13 @@ const CustomTab: FC<ICustomTabProps> = ({
       style={{
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: (tabBarH - 40) / 2 - (name ? 0 : 10),
       }}>
       {!!icon && (
         <>
           <Lottie
             style={{
-              width: name ? 22 : 50,
-              height: name ? 22 : 50,
+              width: 22,
+              height: 22,
             }}
             ref={ref}
             source={icon}
