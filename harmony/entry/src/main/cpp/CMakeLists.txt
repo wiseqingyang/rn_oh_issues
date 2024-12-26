@@ -6,6 +6,15 @@ set(OH_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 set(RNOH_CPP_DIR "${OH_MODULE_DIR}/@rnoh/react-native-openharmony/src/main/include")
 set(REACT_COMMON_PATCH_DIR "${RNOH_CPP_DIR}/patches/react_native_core")
 set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
+set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+
+set(third_party_dir "${RNOH_CPP_DIR}/third-party")
+set(hermes_include_dirs
+    "${third_party_dir}/hermes/API"
+    "${third_party_dir}/hermes/public"
+)
+
 
 set(CMAKE_CXX_STANDARD 17)
 set(LOG_VERBOSITY_LEVEL 1)
@@ -61,6 +70,8 @@ include_directories(${NATIVERENDER_ROOT_PATH}
                     ${RNOH_CPP_DIR}/third-party/boost/libs/iterator/include
                     ${RNOH_CPP_DIR}/third-party/boost/libs/detail/include
                     ${RNOH_CPP_DIR}/patches/react_native_core/react/renderer/textlayoutmanager/platform/harmony
+                    ${hermes_include_dirs}
+                    ${RNOH_CPP_DIR}/third-party/boost/libs/regex/include
                     )
 
 configure_file(
@@ -132,6 +143,7 @@ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/lottie-react-native/src/mai
 add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-pager-view/src/main/cpp" ./pager_view)
 add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-video/src/main/cpp" ./video)
 add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-pdf/src/main/cpp" ./pdfview)
+add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-reanimated/src/main/cpp" ./reanimated)
 
 # 三方包得加上folly编译配置
 #target_compile_options(rnoh_sample_package PUBLIC ${folly_compile_options})
@@ -141,6 +153,7 @@ target_compile_options(rnoh_lottie PUBLIC ${folly_compile_options})
 target_compile_options(rnoh_pager_view PUBLIC ${folly_compile_options})
 target_compile_options(rnoh_video PUBLIC ${folly_compile_options})
 target_compile_options(rnoh_pdf_view PUBLIC ${folly_compile_options})
+target_compile_options(rnoh_reanimated PUBLIC ${folly_compile_options})
 # RNOH_END: add_package_subdirectories
 
 # 添加rnoh_app共享包
@@ -161,6 +174,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_lottie)
 target_link_libraries(rnoh_app PUBLIC rnoh_pager_view )
 target_link_libraries(rnoh_app PUBLIC rnoh_video)
 target_link_libraries(rnoh_app PUBLIC rnoh_pdf_view)
+target_link_libraries(rnoh_app PUBLIC rnoh_reanimated)
 # RNOH_END: link_packages
 
 target_compile_options(rnoh_app PUBLIC ${folly_compile_options} -DRAW_PROPS_ENABLED -std=c++17)

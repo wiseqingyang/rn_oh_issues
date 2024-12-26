@@ -12,6 +12,7 @@
 #include "ViewPagerPackage.h"
 #include "RNCVideoPackage.h"
 #include "PdfViewPackage.h"
+#include "ReanimatedPackage.h"
 
 using namespace rnoh;
 
@@ -23,6 +24,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
         std::make_shared<LottieAnimationViewPackage>(ctx),
         std::make_shared<ViewPagerPackage>(ctx),
         std::make_shared<RNCVideoPackage>(ctx),
-        std::make_shared<PdfViewPackage>(ctx)
+        std::make_shared<PdfViewPackage>(ctx),
+        std::make_shared<ReanimatedPackage>(ctx)
     };
 }
